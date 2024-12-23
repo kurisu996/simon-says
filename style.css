@@ -1,5 +1,59 @@
-Gamediv{
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('imgs/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    background-color: rgb(128, 128, 128, 0.5);
+}
+
+.gamediv{
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 2;
+    gap: 10px;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+
+.griditem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#color1{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#color2{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#color3{
+    grid-column: 1;
+    grid-row: 2;
+}
+#color4{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#startbtn {
+    margin-bottom: 35px;
+    padding: 10px 20px;
+    font-size: 24px;
 }

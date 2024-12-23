@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Says</title>
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button type="button" id="startbtn">Start</button>
-    <div id="Gamediv">
-        <img src="imgs/red.png" alt="red" id="color1">
-        <img src="imgs/green.png" alt="green" id="color2">
-        <img src="imgs/blue.png" alt="blue" id="color3">
-        <img src="imgs/yellow.png" alt="yellow" id="color4">
+    <header>
+        <h1>Kurisu's Simon-Says Game</h1>
+    </header>
+    <div class="gamediv">
+        <img src="imgs/red.png" alt="red" id="color1" class="griditem">
+        <img src="imgs/green.png" alt="green" id="color2" class="griditem">
+        <img src="imgs/blue.png" alt="blue" id="color3" class="griditem">
+        <img src="imgs/yellow.png" alt="yellow" id="color4" class="griditem">
     </div>
+    
+    <button type="button" id="startbtn">Start</button>
 </body>
 </html>
