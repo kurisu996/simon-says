@@ -7,6 +7,7 @@ let count = 0;
 let sequence = [];
 let userSequence = [];
 let userStep = 0;
+let canClick = false;
 
 document.getElementById("startbtn").addEventListener("click", gamestart);
 
@@ -16,14 +17,18 @@ function gamestart(){
         userStep = 0;
         lost = false;
         count = 0;  
+        canClick = false;
         nextRound();
 }
 
 function nextRound(){
         count++;
+        canClick = false;
         let random = Math.floor(Math.random() * (max-min+1) + min);
         sequence.push(random);
-        beep();
+        beep().then(() => {
+                canClick = true;
+        });
 }
 
 async function beep(){
@@ -43,7 +48,15 @@ document.getElementById("color2").addEventListener("click", () => checkUserInput
 document.getElementById("color3").addEventListener("click", () => checkUserInput(3));
 document.getElementById("color4").addEventListener("click", () => checkUserInput(4));
 
-function checkUserInput(color){
+async function checkUserInput(color){
+        if (!canClick) return;
+
+        let image = document.getElementById("color" + color);
+        let audio = new Audio('sounds/' + color + '.mp3');
+        image.style.filter = `brightness(75%)`;
+        audio.play();
+        await new Promise(resolve => setTimeout(resolve, 500)); // Warte 0.5 Sekunden
+        image.style.filter = `brightness(100%)`;
         userSequence.push(color);
         if(userSequence[userStep] !== sequence[userStep]){
                 lost = true;
@@ -54,6 +67,7 @@ function checkUserInput(color){
                 if(userStep === sequence.length){
                         userStep = 0;
                         userSequence = [];
+                        await new Promise(resolve => setTimeout(resolve, 750));
                         nextRound();
                 }
         }
